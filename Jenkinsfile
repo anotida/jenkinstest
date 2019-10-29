@@ -12,4 +12,15 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            mail to: 'amaditsha@gmail.com',
+            subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Your build completed, please check: ${env.BUILD_URL}"
+        }
+    }
+
+    triggers {
+        pollSCM('*/5 * * * *')
+    }
 }
