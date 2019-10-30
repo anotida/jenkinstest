@@ -11,6 +11,21 @@ pipeline {
                 sh './mvnw test'
             }
         }
+        stage("Package") {
+            steps {
+                sh './mvnw package'
+            }
+        }
+        stage("Docker build") {
+            steps {
+                sh 'docker build -t localhost:5000/jenkinstest'
+            }
+        }
+        stage("Docker push") {
+            steps {
+                sh 'docker push localhost:5000/jenkinstest'
+            }
+        }
     }
     post {
         always {
