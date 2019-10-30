@@ -27,4 +27,10 @@ public class HelloController {
         return "Test happy";
     }
 
+    @RequestMapping("/test3")
+    public String testThree() {
+        log.info("Inside the test 2 method");
+        return "Test happy";
+    }
+
 }
