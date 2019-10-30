@@ -16,6 +16,12 @@ pipeline {
                 sh './mvnw package'
             }
         }
+        stage("Initialize") {
+            steps {
+                def dockerHome = tool 'myDocker'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+           }
+        }
         stage("Docker build") {
             steps {
                 sh 'docker build -t localhost:5000/jenkinstest'
