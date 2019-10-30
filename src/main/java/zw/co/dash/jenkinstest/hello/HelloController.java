@@ -17,7 +17,13 @@ public class HelloController {
 
     @RequestMapping("/test")
     public String test() {
-        log.info("Inside the test method");
+        log.info("Inside the test 1 method");
+        return "Test happy";
+    }
+
+    @RequestMapping("/test2")
+    public String testTwo() {
+        log.info("Inside the test 2 method");
         return "Test happy";
     }
 
