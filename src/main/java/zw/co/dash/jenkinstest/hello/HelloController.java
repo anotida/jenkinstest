@@ -31,7 +31,7 @@ public class HelloController {
     @RequestMapping("/test/two")
     @ResponseBody
     public Long testTwoTwo() {
-        log.info("Inside the test 2 method");
+        log.info("Inside the test two method");
         return 0l;
     }
 
