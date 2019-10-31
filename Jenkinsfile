@@ -46,12 +46,6 @@ pipeline {
             body: "Your build completed, please check: ${env.BUILD_URL}"
         }
     }
-    post {
-        always {
-            sh 'docker stop jenkinstest'
-        }
-    }
-
     triggers {
         pollSCM('*/5 * * * *')
     }
