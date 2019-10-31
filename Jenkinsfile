@@ -28,7 +28,14 @@ pipeline {
         }
         stage("Deploy to testing") {
             steps {
-                sh 'docker run -d -p 8765:8080 --name jenkinstest localhost:5000/jenkinstest'
+                sh 'docker run -d --rm -p 8765:8080 --name jenkinstest localhost:5000/jenkinstest'
+            }
+        }
+
+        stage("Acceptance Test") {
+            steps {
+                sleep 60
+                sh './acceptance_test.sh'
             }
         }
     }
@@ -36,7 +43,9 @@ pipeline {
         always {
             mail to: 'amaditsha@gmail.com',
             subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Your build completed, please check: ${env.BUILD_URL}"
+            body: "Your build completed, please check: ${env.BUILD_URL}",
+
+            sh 'docker stop jenkinstest'
         }
     }
 
