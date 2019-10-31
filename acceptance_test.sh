@@ -1,2 +1,2 @@
 #!/bin/bash
-test $(curl localhost:8765/test/two) -eq 0
+test $(curl localhost:8080/test/two) -eq 0
