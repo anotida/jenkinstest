@@ -26,6 +26,11 @@ pipeline {
                 sh 'docker push localhost:5000/jenkinstest'
             }
         }
+        stage("Deploy to testing") {
+            steps {
+                sh 'docker run -d -p 8765:8080 --name jenkinstest localhost:5000/jenkinstest'
+            }
+        }
     }
     post {
         always {
