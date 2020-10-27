@@ -32,13 +32,7 @@ pipeline {
             }
         }
 
-        stage("Acceptance Test") {
-            steps {
-                sleep 60
-                sh 'chmod a+x acceptance_test.sh',
-                sh './acceptance_test.sh'
-            }
-        }
+        
     }
     post {
         always {
